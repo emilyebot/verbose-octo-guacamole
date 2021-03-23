@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF 8">
+    <meta http equiv="X Ua Compatible" content="IE=edge">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        height: 400px;
+        background-color: rgb(169, 81, 56);
+}
+    #scroller * {
+        overflow-anchor: auto;
+    }
+    
+    #anchor {
+        overflow-anchor: auto;
+        height: 1px;
+    }
+    
+    :root {
+        font-family: sans-serif;
+    }
+    </style>
+<div class ="container">
+    <script>
+    var t = 0
+    let type = ["An archive"
+    ,"An art gallery"
+    ,"An art studio"
+    ,"An atrium"
+    ,"An auditorium"
+    ,"A beauty salon"
+    ,"A canteen"
+    ,"A classroom"
+    ,"A clinic"
+    ,"A club"
+    ,"A coffee shop"
+    ,"A corridor"
+    ,"A day centre"
+    ,"A deli"
+    ,"An entrance hall"
+    ,"A gym"
+    ,"An italian bar"
+    ,"A library"
+    ,"A lobby"
+    ,"A locker room"
+    ,"An office"
+    ,"A reception"
+    ,"A sacred space"
+    ,"A showroom"
+    ,"A toilet"
+    ,"A spa"
+    ,"An apartment"
+    ,"A bathroom"
+    ,"A bedroom"
+    ,"A dining room"
+    ,"A duplex"
+    ,"A home office"
+    ,"An interior"
+    ,"A kitchen"
+    ,"A living room"
+    ,"A penthouse"
+    ,"A machine a habiter"
+    ,"A mountain"
+    ,"A sauna"
+    ,"A vernacular interior"
+    ,"A wardrobe"]
+    let colour = ["black", "blue", "cyan", "gold", "green", "grey", "orange", "pink", "purple", "red", "white", "yellow"]
+    let materials = ["bamboo"
+    ,"bricks"
+    ,"cardboard"
+    ,"carpets"
+    ,"concrete"
+    ,"cor ten"
+    ,"fabric"
+    ,"glass"
+    ,"ice"
+    ,"marble"
+    ,"membranes"
+    ,"metals"
+    ,"plaster"
+    ,"polycarbonate"
+    ,"stone"
+    ,"terracotta"
+    ,"tiles"
+    ,"timber"
+    ,"wallpapers"
+    ]
+    let element = ["arches"
+    ,"balconies"
+    ,"bearing walls"
+    ,"bookcases"
+    ,"bricks facades"
+    ,"canopies"
+    ,"ceilings"
+    ,"ceramic floors"
+    ,"chairs sofas"
+    ,"columns"
+    ,"concrete structures"
+    ,"courtyards"
+    ,"curtains"
+    ,"curved roofs"
+    ,"daylighting"
+    ,"design objects"
+    ,"doors"
+    ,"engawa"
+    ,"entrances"
+    ,"external pavings"
+    ,"facade cladding systems"
+    ,"fireplaces"
+    ,"fountains"
+    ,"furniture"
+    ,"gates"
+    ,"glass facades"
+    ,"glass partitions"
+    ,"glass roofs"
+    ,"green roofs"
+    ,"handles"
+    ,"hanging walkways"
+    ,"indoor stairs"
+    ,"interior lighting"
+    ,"lamps"
+    ,"massive walls"
+    ,"metal claddings"
+    ,"outdoor stairs"
+    ,"patios"
+    ,"points of view"
+    ,"porches"
+    ,"private pools"
+    ,"railings"
+    ,"ramps"
+    ,"roof gardens"
+    ,"round windows"
+    ,"shop windows"
+    ,"skins"
+    ,"skybridges"
+    ,"slat facades"
+    ,"sliding elements"
+    ,"sloping roofs"
+    ,"solar shading systems"
+    ,"spiral stairs"
+    ,"steel structures"
+    ,"stone facades"
+    ,"stone floors"
+    ,"stone walls"
+    ,"tables"
+    ,"terraces"
+    ,"terracotta facades"
+    ,"the architecture of the corner"
+    ,"urban furniture"
+    ,"vaults"
+    ,"vertical gardens"
+    ,"window frames"
+    ,"windows"
+    ,"wooden facades"
+    ,"wooden floors"
+    ,"wooden partitions"
+    ,"wooden structures"]
+    let places = [ 
+    "an administrative center"
+    ,"an airport"
+    ,"an apartment block"
+    ,"an archaeological park"
+    ,"an arena"
+    ,"a bar"
+    ,"a beach facility"
+    ,"a bike station"
+    ,"a boathouse"
+    ,"a bus stop"
+    ,"a camping"
+    ,"a car park"
+    ,"a catwalk"
+    ,"a chapel"
+    ,"a church"
+    ,"a cinema"
+    ,"a city hall"
+    ,"a civic center"
+    ,"a university"
+    ,"a concert hall"
+    ,"a convention center"
+    ,"a convent"
+    ,"a monastery"
+    ,"a parishe"
+    ,"a courthouse"
+    ,"a covered square"
+    ,"a cultural center"
+    ,"a fire police station"
+    ,"a footbridge"
+    ,"a funerary"
+    ,"a chapel"
+    ,"a warehouse"
+    ,"a garden studio"
+    ,"a gas station"
+    ,"a green and scenic walkway"
+    ,"a greenhouse"
+    ,"a hospital"
+    ,"a hostel"
+    ,"a hotel"
+    ,"an industrial building"
+    ,"an installation"
+    ,"an italian church"
+    ,"a kindergarten"
+    ,"a library"
+    ,"a maritime facility"
+    ,"a memorial"
+    ,"a metro station"
+    ,"a mosque"
+    ,"a mountain hut"
+    ,"a museum"
+    ,"a music school and art academy"
+    ,"a nursing home"
+    ,"an office block"
+    ,"an outdoor sports field"
+    ,"a pavilion"
+    ,"a power plant"
+    ,"a primary school"
+    ,"a prison"
+    ,"a private garden"
+    ,"a public and social housing"
+    ,"a research center"
+    ,"a residential complex"
+    ,"a restaurant"
+    ,"a retail market"
+    ,"a row house"
+    ,"a secondary school"
+    ,"a shopping center"
+    ,"a skatepark"
+    ,"a small apartment block"
+    ,"a small urban garden"
+    ,"a sport club"
+    ,"a sport hall"
+    ,"a stadium"
+    ,"a swimming pool"
+    ,"a synagogue"
+    ,"a tea house"
+    ,"a temple"
+    ,"a theater"
+    ,"a skyscraper"
+    ,"a traffic bridge"
+    ,"a training center"
+    ,"a train station"
+    ,"a transportation hub"
+    ,"an urban park"
+    ,"a visitor center"
+    ,"a wine distillery"
+    ,"an animal shelter"
+    ];
+    
+    let topic = ["below ground zero"
+    ,"beyond minimal"
+    ,"brutalistic"
+    ,"building high"
+    ,"building in between"
+    ,"building in historical context"
+    ,"building in landscape"
+    ,"building in urban context"
+    ,"building together"
+    ,"by night"
+    ,"don't get lost"
+    ,"enfilades"
+    ,"ephemeral"
+    ,"existenzminimum"
+    ,"extra small"
+    ,"forgotten interrupted"
+    ,"going places"
+    ,"handmade"
+    ,"inside modernism"
+    ,"into the wild"
+    ,"is ornament a crime"
+    ,"labyrinths"
+    ,"less is more, more or less"
+    ,"lite"
+    ,"repurposed, recycled and reused"
+    ,"restored and reused"
+    ,"social"
+    ,"turning from brown to green"
+    ,"un certain regard"
+    ,"vernacular"
+    ,"wip"
+    ];
+    
+    function select_random(pick) {
+    randomizer = pick[Math.floor(Math.random() * pick.length)]; return randomizer;
+    }
+    
+    // This is the generator function
+    function generatePoem(n) {
+    // Select a random item from each list
+    let randomColour = select_random(colour);
+    let randomMaterial = select_random(materials);
+    let randomPlace = select_random(places);
+    let randomType = select_random(type);
+    let randomTopic = select_random(topic);
+    let randomElement = select_random(element)
+    //let randomColor = select_random(colors);
+    //let randomalign = select_random(align);
+    let p = document.createElement("p");
+    document.body.appendChild(p);
+    p.innerHTML =
+    ` ${randomType} of ${randomMaterial}  \n <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in ${randomPlace} \n <br> 
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;using ${randomElement}\n <br> 
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inhabited but ${randomTopic}<br>`;
+    //p.style.color = `${randomColor}`;
+    //p.style.textalign = "left";
+    //p.style.fontSize = "13pt";
+    }
+    // Invoke (call) the poem generator
+    //generatePoem(2);
+    setInterval(generatePoem, 4000)
+    </script>
+<body>
+<p id="poem"></p>
+
+</body>
+</html>
+</div>
